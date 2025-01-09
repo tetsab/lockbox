@@ -1,0 +1,8 @@
+{
+    "name": "project/bookwise",
+    "description": "Bookwise project for managing books.",
+    "license": "proprietary",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
