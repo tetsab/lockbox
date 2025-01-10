@@ -7,8 +7,13 @@ class IndexController
     public function __invoke()
     {
         // $search = isset($_REQUEST['search']) ? $_REQUEST['search'] : null;
-
-        view('index', template: 'guest');
+        if (auth()) {
+            view('dashboard', [
+                'user' => auth()
+            ]);
+        } else {
+            view('index', template: 'guest');
+        }   
     }
 
 }
