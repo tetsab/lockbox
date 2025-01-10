@@ -8,7 +8,7 @@ class IndexController
     {
         // $search = isset($_REQUEST['search']) ? $_REQUEST['search'] : null;
 
-        view('index');
+        view('index', template: 'guest');
     }
 
 }

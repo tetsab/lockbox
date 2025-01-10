@@ -10,7 +10,7 @@ class LoginController
 {
     public function index()
     {
-        return view('login');
+        return view('login', template: 'guest');
     }
 
     public function login()
@@ -24,7 +24,7 @@ class LoginController
         ], $_POST);
 
         if ($validation->notApproved()) {
-            return view('login');
+            return view('login', template: 'guest');
         }
 
         $database = new Database(config('database'));
@@ -42,7 +42,7 @@ class LoginController
 
         if (!($user && password_verify($passwordPost, $passwordHash))) {
             flash()->push('validations', ['email' => ['User or password incorrect. Try again.']]);
-            return view('login');
+            return view('login', template: 'guest');
         }
 
         $_SESSION['auth'] = $user;

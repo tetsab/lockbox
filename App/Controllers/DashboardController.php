@@ -10,6 +10,8 @@ class DashboardController
         {
             return redirect('/login');
         }
-        echo "Logged in ".auth()->name;
+        view('dashboard', [
+            'user' => auth()
+        ]);
     }
 }

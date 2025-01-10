@@ -2,8 +2,6 @@
 
 function base_path($path)
 {
-    // dd($path);
-    // $path = "Core/Flash";
     return __DIR__ . "/../" . $path;
 }
 
@@ -12,13 +10,13 @@ function redirect($uri)
     return header('Location: '.$uri);
 }
 
-function view(string $view, array $data = []): void 
+function view(string $view, array $data = [], $template = 'app'): void 
 {
     foreach ($data as $key => $value) {
         $$key = $value;
     }
-    // dd(base_path());
-    require base_path("views/template/app.php");
+
+    require base_path("views/template/$template.php");
 }
 
 function dd(...$dump): void 

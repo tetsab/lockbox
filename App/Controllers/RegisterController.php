@@ -9,7 +9,7 @@ class RegisterController
 {
     public function index()
     {
-        return view('register');
+        return view('register', template: 'guest');
     }
 
     public function register()
@@ -24,7 +24,7 @@ class RegisterController
         
         
         if ($validation->notApproved()) {
-            return view('register');
+            return view('register', template: 'guest');
         }
     
         $database->query(
