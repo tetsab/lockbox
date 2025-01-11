@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Notes;
 
-class DashboardController
+class IndexController
 {
     public function __invoke()
     {
@@ -10,7 +10,7 @@ class DashboardController
         {
             return redirect('/login');
         }
-        view('dashboard', [
+        view('notes', [
             'user' => auth()
         ]);
     }
