@@ -13,7 +13,7 @@
         <div class="label">
             <span class="label-text">Note</span>
         </div>
-        <textarea class="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+        <textarea class="textarea textarea-bordered h-24"></textarea>
     </label>
 
     <div class="flex justify-between items-center">

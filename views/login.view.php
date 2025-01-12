@@ -1,3 +1,6 @@
+<?php 
+    $validations = flash()->get('validations');
+?>
 <div class="grid grid-cols-2">
     <div class="hero min-h-screen flex ml-40">
         <div class="hero-content -mt-20">
@@ -11,26 +14,7 @@
     <div class="bg-white hero mr-40 min-h-scren text-black">
         <div class="hero-content -mt-20">
             <form method="POST" action="/login">
-                <?php 
-                    $validations = flash()->get('validations');
-                    $msg = flash()->get('message');
-                ?>
-                <?php if($msg):?>
-                    <div role="alert" class="alert alert-success">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 shrink-0 stroke-current"
-                        fill="none"
-                        viewBox="0 0 24 24">
-                        <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span><?=$msg?></span>
-                    </div>
-                <?php endif; ?>
+                <?php require base_path('views/partials/_message.view.php'); ?>
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">Login</div>

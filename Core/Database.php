@@ -21,7 +21,6 @@ class Database
         if ($class) {
             $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
         }
-
         $prepare->execute($params);
 
         return $prepare;

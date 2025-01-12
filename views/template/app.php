@@ -11,11 +11,12 @@
 
 <body class="">
 
-    <div class="mx-auto max-w-screen-lg flex flex-col">
+    <div class="mx-auto max-w-screen-lg flex flex-col space-y-6">
         <?php require base_path('views/partials/_navbar.view.php'); ?>
         <?php require base_path('views/partials/_search.view.php');?>
+        <?php require base_path('views/partials/_message.view.php'); ?>
 
-        <div class="flex flex-grow py-6">
+        <div class="flex flex-grow pb-6">
             <?php require "../views/{$view}.view.php"; ?>
         </div>
     </div>
