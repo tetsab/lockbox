@@ -1,6 +1,4 @@
-<?php
-    $validations = flash()->get('validations');
-?>
+<?php $validations = flash()->get('validations');?>
 
 <div class="bg-base-300 rounded-l-box w-56">
     <div class="bg-base-200 p-4 rounded-tl-box">

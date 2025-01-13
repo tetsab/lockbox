@@ -8,6 +8,7 @@ use App\Controllers\LogoutController;
 use App\Controllers\RegisterController;
 use App\Controllers\Notes\CreateController;
 use App\Middlewares\GuestMiddleware;
+use App\Middlewares\AuthMiddleware;
 use App\Controllers\Notes;
 
 
@@ -20,10 +21,11 @@ use App\Controllers\Notes;
     ->post('/register', [RegisterController::class, 'register'], GuestMiddleware::class)
     
     // authenticated
-    ->get('/logout', LogoutController::class)  
-    ->get('/notes', Notes\IndexController::class)
-    ->get('/notes/create', [CreateController::class, 'index'])
-    ->post('/notes/create', [CreateController::class, 'store'])
+    ->get('/logout', LogoutController::class, AuthMiddleware::class)  
+    ->get('/notes', Notes\IndexController::class, AuthMiddleware::class)
+    ->get('/notes/create', [CreateController::class, 'index'], AuthMiddleware::class)
+    ->post('/notes/create', [CreateController::class, 'store'], AuthMiddleware::class)
+    ->put('/notes', Notes\UpdateController::class, AuthMiddleware::class)
     
     ->run();
     
