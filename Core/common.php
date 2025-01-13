@@ -76,3 +76,8 @@ function old($field)
     }
     return '';
 }
+
+function request()
+{
+    return new Core\Request();
+}
