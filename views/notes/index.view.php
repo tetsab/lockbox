@@ -13,7 +13,7 @@
 </div>
 
 <div class="bg-base-200 rounded-r-box w-full p-10 flex flex-col space-y-6">
-<form action="/notes" method="POST" id="form-update">
+<form action="/note" method="POST" id="form-update">
     <input type="hidden" name="__method" value="PUT" />
     <input type="hidden" name="id" value="<?=$filteredNote->id?>" />
     <label class="form-control w-full">
@@ -31,7 +31,7 @@
         <div class="label">
             <span class="label-text">Note</span>
         </div>
-        <textarea name="note" class="textarea textarea-bordered h-24"><?=$filteredNote->note?></textarea>
+        <textarea name="note" class="textarea textarea-bordered h-24" placeholder="Write here."><?=$filteredNote->note?></textarea>
         <?php if (isset($validations['note'])): ?>
             <div class="label text-xs text-error"><?=$validations['note'][0]?></div>
         <?php endif;?>
@@ -39,7 +39,11 @@
 </form>
 
     <div class="flex justify-between items-center">
-        <button class="btn btn-error">Delete</button>
+        <form action="/note" method="POST">
+            <input type="hidden" name="__method" value="DELETE">
+            <input type="hidden" name="id" value="<?=$filteredNote->id?>">
+            <button type="submit" class="btn btn-error">Delete</button>
+        </form>
         <button class="btn btn-primary" type="submit" form="form-update">Update</button>
     </div>
 </div>

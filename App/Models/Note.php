@@ -27,4 +27,30 @@ class Note
             )
         )->fetchAll();
     }
+ 
+    public static function update($id, $title, $note)
+    {
+        $db = new Database(config('database'));
+        $db->query(
+            query: "
+                update notes
+                set title = :title, 
+                note = :note
+                where id = :id",
+            params: [
+                'title' => $title,
+                'note' => $note,
+                'id' => $id,
+            ],
+        );
+    }
+
+    public static function delete($id)
+    {
+        $db = new Database(config('database'));
+        $db->query(
+            query: "delete from notes where id = :id",
+            params: ['id' => $id],
+        );
+    }
 }

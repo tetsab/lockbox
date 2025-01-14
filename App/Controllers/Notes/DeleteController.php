@@ -6,23 +6,20 @@ use Core\Database;
 use Core\Validation;
 use App\Models\Note;
 
-class UpdateController
+class DeleteController
 {
     public function __invoke()
     {
         $validation = Validation::validate([
-            'title' => ['required', 'min:3', 'max:255'],
-            'note' => ['required'],
             'id' => ['required'],
         ], request()->all());
 
         if ($validation->notApproved()) {
             return redirect('/notes?id='.request()->post('id'));
         }
-
-        Note::update(request()->post('id'), request()->post('note'), request()->post('note'));
+        Note::delete(request()->post('id'));
         
-        flash()->push('message', 'Registered successfully!');
+        flash()->push('message', 'Register deleted successfully!');
         
         return redirect('/notes');
     }
