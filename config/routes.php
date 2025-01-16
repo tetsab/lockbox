@@ -7,7 +7,6 @@ use App\Controllers\LoginController;
 use App\Controllers\LogoutController;
 use App\Controllers\RegisterController;
 use App\Controllers\Notes\CreateController;
-use App\Controllers\Notes\DeleteController;
 use App\Middlewares\GuestMiddleware;
 use App\Middlewares\AuthMiddleware;
 use App\Controllers\Notes;
@@ -28,6 +27,9 @@ use App\Controllers\Notes;
     ->post('/notes/create', [CreateController::class, 'store'], AuthMiddleware::class)
     ->put('/note', Notes\UpdateController::class, AuthMiddleware::class)
     ->delete('/note', Notes\DeleteController::class, AuthMiddleware::class)
+    
+    ->get('/show', [Notes\VisualizationController::class, 'show'], AuthMiddleware::class)
+    ->get('/hide', [Notes\VisualizationController::class, 'hide'], AuthMiddleware::class)
     
     ->run();
     

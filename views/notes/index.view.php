@@ -31,7 +31,11 @@
         <div class="label">
             <span class="label-text">Note</span>
         </div>
-        <textarea name="note" class="textarea textarea-bordered h-24" placeholder="Write here."><?=$filteredNote->note?></textarea>
+        <textarea 
+        <?php if (!session()->get('show')): ?>
+            disabled
+        <?php endif;?>
+        name="note" class="textarea textarea-bordered h-24" placeholder="Write here."><?=$filteredNote->note()?></textarea>
         <?php if (isset($validations['note'])): ?>
             <div class="label text-xs text-error"><?=$validations['note'][0]?></div>
         <?php endif;?>

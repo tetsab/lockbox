@@ -4,7 +4,12 @@
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-            <li><a href="/show">👁️</a></li>
+            <li>
+                <?php if (session()->geT('show')): ?>   
+                    <a href="/hide">🫣</a></li>
+                <?php else: ?>
+                    <a href="/show">👀</a></li>
+                <?php endif; ?>
             <li>
                 <details>
                     <summary><?= auth()->name ?></summary>

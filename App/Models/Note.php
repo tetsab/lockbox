@@ -13,6 +13,15 @@ class Note
     public $date_creation;
     public $date_update;
 
+    public function note()
+    {
+        if (session()->get('show')) {
+            return $this->note;
+        }
+
+        return str_repeat('*', rand(10, 100));
+    }
+
     public static function all(?string $filter = null): ?array
     {
         $db = new Database(config('database'));
@@ -31,17 +40,21 @@ class Note
     public static function update($id, $title, $note)
     {
         $db = new Database(config('database'));
+        $set = "title = :title";
+        
+        if ($note) {
+            $set .= ", note = :note";
+        }
+
         $db->query(
             query: "
                 update notes
-                set title = :title, 
-                note = :note
+                set $set
                 where id = :id",
-            params: [
+            params: array_merge([
                 'title' => $title,
-                'note' => $note,
                 'id' => $id,
-            ],
+            ], $note ? ['note' => $note] : [])
         );
     }
 
