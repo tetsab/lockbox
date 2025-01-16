@@ -16,7 +16,7 @@ class Note
     public function note()
     {
         if (session()->get('show')) {
-            return $this->note;
+            return decrypt($this->note);
         }
 
         return str_repeat('*', rand(10, 100));
@@ -36,6 +36,20 @@ class Note
             )
         )->fetchAll();
     }
+
+    public static function create($data)
+    {
+        $database = new Database(config('database'));
+
+        $database->query(
+            "insert into notes (user_id, title, note, date_creation, date_update) 
+            values (:user_id, :title, :note, :date_creation, :date_update)",
+            params: array_merge($data, [
+                'date_creation' => date('Y-m-d H:i:s'),
+                'date_update' => date('Y-m-d H:i:s')
+        ])
+      );
+    }
  
     public static function update($id, $title, $note)
     {
@@ -54,7 +68,7 @@ class Note
             params: array_merge([
                 'title' => $title,
                 'id' => $id,
-            ], $note ? ['note' => $note] : [])
+            ], $note ? ['note' => encrypt($note)] : [])
         );
     }
 
@@ -67,3 +81,5 @@ class Note
         );
     }
 }
+
+// https://www.php.net/manual/en/function.openssl-encrypt.php

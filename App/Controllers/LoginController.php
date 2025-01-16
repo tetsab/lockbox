@@ -15,13 +15,13 @@ class LoginController
 
     public function login()
     {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = request()->post('email');
+        $password = request()->post('password');
 
         $validation = Validation::validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
-        ], $_POST);
+        ], request()->all());
 
         if ($validation->notApproved()) {
             return view('login', template: 'guest');
@@ -37,7 +37,7 @@ class LoginController
                             params: compact('email')
                             )->fetch();
 
-        $passwordPost = $_POST['password'];
+        $passwordPost = $password;
         $passwordHash = $user->password;
 
         if (!($user && password_verify($passwordPost, $passwordHash))) {
@@ -45,7 +45,8 @@ class LoginController
             return view('login', template: 'guest');
         }
 
-        $_SESSION['auth'] = $user;
+
+        session()->set('auth', $user);
     
         flash()->push('message', 'Welcome, '.$user->name.'!');
         

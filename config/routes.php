@@ -28,7 +28,8 @@ use App\Controllers\Notes;
     ->put('/note', Notes\UpdateController::class, AuthMiddleware::class)
     ->delete('/note', Notes\DeleteController::class, AuthMiddleware::class)
     
-    ->get('/show', [Notes\VisualizationController::class, 'show'], AuthMiddleware::class)
+    ->get('/confirm', [Notes\VisualizationController::class, 'confirm'], AuthMiddleware::class)
+    ->post('/show', [Notes\VisualizationController::class, 'show'], AuthMiddleware::class)
     ->get('/hide', [Notes\VisualizationController::class, 'hide'], AuthMiddleware::class)
     
     ->run();

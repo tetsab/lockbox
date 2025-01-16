@@ -8,7 +8,7 @@
                 <?php if (session()->geT('show')): ?>   
                     <a href="/hide">🫣</a></li>
                 <?php else: ?>
-                    <a href="/show">👀</a></li>
+                    <a href="/confirm">👀</a></li>
                 <?php endif; ?>
             <li>
                 <details>

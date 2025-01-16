@@ -25,7 +25,7 @@ class UpdateController
             return redirect('/notes?id=' . request()->post('id'));
         }
 
-        Note::update(request()->post('id'), request()->post('note'), request()->post('note'));
+        Note::update(request()->post('id'), request()->post('title'), request()->post('note'));
 
         flash()->push('message', 'Registered successfully!');
 
