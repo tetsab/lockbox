@@ -2,3 +2,4 @@
 public/images/*
 database/*
 /vendor/
+.DS_Store
