@@ -16,7 +16,7 @@ class IndexController
             return view('notes/not-found');
         }
 
-        view('notes/index', [
+        return view('notes/index', [
             'notes' => $notes,
             'filteredNote' => $filteredNote ?? null,
         ]);

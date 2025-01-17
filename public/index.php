@@ -1,12 +1,13 @@
 <?php
 
-require_once '../Core/common.php';
+require '../vendor/autoload.php';
+// require '../Core/common.php';
 
-spl_autoload_register(function ($class) {
-    $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+// spl_autoload_register(function ($class) {
+//     $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
     
-    require base_path("{$class}.php");
-});
+//     require base_path("{$class}.php");
+// });
 
 session_start();
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\Database;
+use Carbon\Carbon;
 
 class Note
 {
@@ -12,6 +13,16 @@ class Note
     public $note;
     public $date_creation;
     public $date_update;
+
+    public function dateCreated()
+    {
+        return Carbon::parse($this->date_creation);
+    }
+
+    public function dateUpdated()
+    {
+        return Carbon::parse($this->date_update);
+    }
 
     public function note()
     {

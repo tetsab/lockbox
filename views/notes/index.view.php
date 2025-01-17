@@ -7,7 +7,7 @@
         <?php if ($key == 0): ?> rounded-tl-box <?php endif;?>
         <?php if ($note->id == $filteredNote->id): ?> bg-base-200 <?php endif;?>">
             <?=$note->title ?> <br/>
-            <span class="text-xs">id:  <?=$note->id?></span>
+            <span class="text-xs">id: <?=$note->id?>|| Created: <?=$note->dateCreated()->locale('pt_BR')->diffForHumans()?> </span>
         </a>
     <?php endforeach; ?>
 </div>
